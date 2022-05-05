@@ -28,9 +28,15 @@ namespace Game.Class.Objects
             set => graph = value;
         }
 
-        public Entity()
+        public Entity(char graph)
         {
+            this.graph = graph;
             position = new Vector2(0, 0);
+        }
+        public Entity(char graph, Vector2 position)
+        {
+            this.graph = graph;
+            this.position = position;
         }
 
         public void Draw()

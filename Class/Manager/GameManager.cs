@@ -1,6 +1,5 @@
 ﻿using Game.Class.Objects;
 using System;
-using System.Threading;
 
 namespace Game.Class.Manager
 {
@@ -8,19 +7,23 @@ namespace Game.Class.Manager
     class GameManager
     {
         private bool isPlaying = true;
-        private Entity entity;
+        private Player player;
 
         public void Run()
         {
-            entity = new Entity();
-            entity.Graph = 'X';
+            Console.CursorVisible = false;
+
+            player = new Player('O', new Vector2(Console.WindowWidth / 2, Console.WindowHeight / 2));
+            
 
             while (isPlaying)
             {
-                //Console.Clear();
-                entity.Position += Input(Console.ReadKey(true).KeyChar);
-                entity.Draw();
-                //Thread.Sleep(200);
+                if (Console.KeyAvailable)
+                {
+                    player.Move(Input(Console.ReadKey(true).KeyChar));
+                }
+
+                player.Draw();
             }
         }
 
