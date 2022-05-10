@@ -24,11 +24,13 @@ namespace Game.Class.Manager
             player1 = new Player('☺', Vector2.Zero, 5);
             player1.Color = ConsoleColor.Blue;
             player1.ScreenMargin = new Vector2(2, 2);
+            player1.Name = "P1";
             player1.SetRandomPos();
 
             player2 = new Player('☻', Vector2.Zero, 5);
             player2.Color = ConsoleColor.Red;
             player2.ScreenMargin = new Vector2(2, 2);
+            player2.Name = "P2";
             player2.SetRandomPos();
 
             enemy = new Enemy('☻', Vector2.One);
@@ -64,7 +66,7 @@ namespace Game.Class.Manager
                 }
 
                 DrawHealthAndScore(player1, score, Vector2.Zero);
-                //DrawHealthAndScore(player2, score, new Vector2(50, 0));
+                DrawHealthAndScore(player2, score, new Vector2(0, 1));
 
                 if (Console.KeyAvailable)
                 {
@@ -120,7 +122,7 @@ namespace Game.Class.Manager
         {
             Console.ResetColor();
             Console.SetCursorPosition(pos.x, pos.y);
-            Console.WriteLine($"Healt: {player.Health:000}/{player.MaxHealth:000} [Attak: {player.IsAttack}] --- Score: {score:0000} ");
+            Console.WriteLine($"{player.Name} Healt: {player.Health}/{player.MaxHealth} [Attak: {player.IsAttack}] --- Score: {score:0000} ");
         }
     }
 }

@@ -4,8 +4,15 @@ namespace Game.Class.Objects
 {
     class Character : Entity
     {
+        string name = string.Empty;
         private int maxHealth = 10;
         private int health = 0;
+
+        public string Name
+        {
+            get => name;
+            set => name = value;
+        }
 
         public int MaxHealth
         {
