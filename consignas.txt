@@ -13,3 +13,7 @@
 7) Al estar en este modo de ataque, si el personaje toca al enemigo, se suma un punto y el enemigo respawnea en otra posicion. El cartel de atacar inmediatamente se va y se vuelve al modo en el que el personaje puede recibir daño
 
 8) Cuando el powerup es agarrado, desaparece y vuelve a aparecer recien cuando se toca al enemigo, en una posición distinta a la que estaba antes
+
+9) Otro personaje con WASD
+
+10) UI/HUD para ese otro personaje

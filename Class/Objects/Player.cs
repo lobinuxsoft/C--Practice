@@ -1,4 +1,5 @@
 ﻿using System;
+using Game.Structs;
 
 namespace Game.Class.Objects
 {

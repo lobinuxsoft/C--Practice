@@ -1,4 +1,6 @@
-﻿namespace Game.Class.Objects
+﻿using Game.Structs;
+
+namespace Game.Class.Objects
 {
     class Character : Entity
     {

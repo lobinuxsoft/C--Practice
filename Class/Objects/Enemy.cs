@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Diagnostics;
+using Game.Structs;
 
 namespace Game.Class.Objects
 {

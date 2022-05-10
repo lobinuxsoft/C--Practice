@@ -1,4 +1,5 @@
 ﻿using Game.Class.Objects;
+using Game.Structs;
 using System;
 
 namespace Game.Class.Manager
@@ -9,15 +10,22 @@ namespace Game.Class.Manager
         int score = 0;
         private bool isPlaying = true;
 
-        private Player player;
+        private Player player1;
+        private Player player2;
+
         private Enemy enemy;
 
         public void Run()
         {
             Console.CursorVisible = false;
 
-            player = new Player('O', new Vector2(Console.WindowWidth / 2, Console.WindowHeight / 2), 5);
-            player.ScreenMargin = new Vector2(2, 2);
+            player1 = new Player('1', new Vector2(0, 0), 5);
+            player1.ScreenMargin = new Vector2(2, 2);
+            player1.SetRandomPos();
+
+            player2 = new Player('2', new Vector2(0, 0), 5);
+            player2.ScreenMargin = new Vector2(2, 2);
+            player2.SetRandomPos();
 
             enemy = new Enemy('E', new Vector2(1, 1));
             enemy.ScreenMargin = new Vector2(2, 2);
@@ -26,21 +34,31 @@ namespace Game.Class.Manager
 
             while (isPlaying)
             {
-                DrawHealthAndScore(player.Health, player.MaxHealth);
+                DrawHealthAndScore(player1.Health, player1.MaxHealth);
 
                 if (Console.KeyAvailable)
                 {
-                    player.Move(Input(Console.ReadKey(true).KeyChar));
+                    ConsoleKey key = Console.ReadKey(true).Key;
+
+                    player1.Move(Input.GetDirection(
+                        key,
+                        ConsoleKey.LeftArrow,
+                        ConsoleKey.RightArrow,
+                        ConsoleKey.UpArrow,
+                        ConsoleKey.DownArrow));
+
+                    player2.Move(Input.GetDirection(key));
                 }
 
-                player.Draw();
+                player1.Draw();
+                player2.Draw();
 
                 enemy.Draw();
 
-                if(player.Position == enemy.Position)
+                if(player1.Position == enemy.Position)
                 {
-                    player.Health--;
-                    player.SetRandomPos();
+                    player1.Health--;
+                    player1.SetRandomPos();
                 }
             }
         }
@@ -49,31 +67,6 @@ namespace Game.Class.Manager
         {
             Console.SetCursorPosition(0, 0);
             Console.WriteLine($"Healt: {min}/{max} --- Score: {score}");
-        }
-
-        private Vector2 Input(char input)
-        {
-            Vector2 result = Vector2.Zero;
-            switch (input)
-            {
-                case 'a':
-                    result.x = -1;
-                    result.y = 0;
-                    break;
-                case 'd':
-                    result.x = 1;
-                    result.y = 0;
-                    break;
-                case 'w':
-                    result.x = 0;
-                    result.y = -1;
-                    break;
-                case 's':
-                    result.x = 0;
-                    result.y = 1;
-                    break;
-            }
-            return result;
         }
     }
 }

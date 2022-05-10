@@ -1,4 +1,4 @@
-﻿namespace Game.Class
+﻿namespace Game.Structs
 {
     struct Vector2
     {
