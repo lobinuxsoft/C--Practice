@@ -4,7 +4,7 @@
 
 * 3) Hay un enemigo que se mueve por la pantalla, de a un casillero a la vez, en una dirección aleatoria a cada movimiento
 
-4) Hay un cartel que dice puntos (inicia en 0) y otro que dice vidas (inicia en 5)
+* 4) Hay un cartel que dice puntos (inicia en 0) y otro que dice vidas (inicia en 5)
 
 5) Si el enemigo toca al personaje, éste último debe aparecer en otra posición (respawnear en algún lugar distinto) y se debe mostrar actualizar el cartel vidas (restando 1)
 
