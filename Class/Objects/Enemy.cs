@@ -9,17 +9,9 @@ namespace Game.Class.Objects
 
         long lastTimeMove = 0;
 
-        Random random;
+        public Enemy(char graph, int maxHealth = 10) : base(graph, maxHealth) { }
 
-        public Enemy(char graph, int maxHealth = 10) : base(graph, maxHealth) 
-        {
-            random = new Random(DateTime.Now.Millisecond);
-        }
-
-        public Enemy(char graph, Vector2 position, int maxHealth = 10) : base(graph, position, maxHealth) 
-        {
-            random = new Random(DateTime.Now.Millisecond);
-        }
+        public Enemy(char graph, Vector2 position, int maxHealth = 10) : base(graph, position, maxHealth) { }
 
         public override void Draw()
         {
@@ -35,9 +27,6 @@ namespace Game.Class.Objects
         private Vector2 IaCalculationMove()
         {
             Vector2 result = Vector2.Zero;
-
-            
-
 
             MovDirection movDirection = (MovDirection)random.Next((int)MovDirection.NONE, (int)(MovDirection.DOWN) + 1);
 

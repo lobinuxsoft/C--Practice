@@ -5,6 +5,9 @@ namespace Game.Class.Objects
 {
     class Entity
     {
+        protected Random random;
+        ConsoleColor color = ConsoleColor.White;
+
         private Vector2 position;
         private Vector2 screenMargin = Vector2.One;
         private char graph;
@@ -36,19 +39,30 @@ namespace Game.Class.Objects
             set => graph = value;
         }
 
-        public Entity(char graph)
+        public ConsoleColor Color
         {
-            this.graph = graph;
-            position = new Vector2(0, 0);
+            get => color;
+            set => color = value;
         }
+
+        public Entity(char graph) : this(graph, Vector2.Zero) { }
+
         public Entity(char graph, Vector2 position)
         {
+            random = new Random(DateTime.Now.Millisecond);
             this.graph = graph;
             this.position = position;
         }
 
+        public void SetRandomPos()
+        {
+            Vector2 pos = new Vector2(random.Next(0, Console.WindowWidth), random.Next(0, Console.WindowHeight));
+            Position = pos;
+        }
+
         public virtual void Draw()
         {
+            Console.ForegroundColor = color;
             Console.SetCursorPosition(position.x, position.y);
             Console.WriteLine(graph);
         }

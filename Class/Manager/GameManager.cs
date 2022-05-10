@@ -13,28 +13,58 @@ namespace Game.Class.Manager
         private Player player1;
         private Player player2;
 
+        Entity powerUp;
+
         private Enemy enemy;
 
         public void Run()
         {
             Console.CursorVisible = false;
 
-            player1 = new Player('1', new Vector2(0, 0), 5);
+            player1 = new Player('☺', Vector2.Zero, 5);
+            player1.Color = ConsoleColor.Blue;
             player1.ScreenMargin = new Vector2(2, 2);
             player1.SetRandomPos();
 
-            player2 = new Player('2', new Vector2(0, 0), 5);
+            player2 = new Player('☻', Vector2.Zero, 5);
+            player2.Color = ConsoleColor.Red;
             player2.ScreenMargin = new Vector2(2, 2);
             player2.SetRandomPos();
 
-            enemy = new Enemy('E', new Vector2(1, 1));
+            enemy = new Enemy('☻', Vector2.One);
+            enemy.Color = ConsoleColor.DarkMagenta;
             enemy.ScreenMargin = new Vector2(2, 2);
-
-
 
             while (isPlaying)
             {
-                DrawHealthAndScore(player1.Health, player1.MaxHealth);
+                if((!player1.IsAttack && !player2.IsAttack) && powerUp == null)
+                {
+                    powerUp = new Entity('♦');
+                    powerUp.Color = ConsoleColor.Green;
+                    powerUp.ScreenMargin = new Vector2(2, 2);
+                    powerUp.SetRandomPos();
+                }
+                else
+                {
+                    if (powerUp != null)
+                    {
+                        powerUp.Draw();
+
+                        if (player1.Position == powerUp.Position)
+                        {
+                            player1.IsAttack = true;
+                            powerUp = null;
+                        }
+                        else if (player2.Position == powerUp.Position)
+                        {
+                            player2.IsAttack = true;
+                            powerUp = null;
+                        }
+                    }
+                }
+
+                DrawHealthAndScore(player1, score, Vector2.Zero);
+                //DrawHealthAndScore(player2, score, new Vector2(50, 0));
 
                 if (Console.KeyAvailable)
                 {
@@ -57,16 +87,40 @@ namespace Game.Class.Manager
 
                 if(player1.Position == enemy.Position)
                 {
-                    player1.Health--;
-                    player1.SetRandomPos();
+                    if (player1.IsAttack)
+                    {
+                        enemy.SetRandomPos();
+                        score++;
+                        player1.IsAttack = false;
+                    }
+                    else
+                    {
+                        player1.Health--;
+                        player1.SetRandomPos();
+                    }
+                }
+                else if(player2.Position == enemy.Position)
+                {
+                    if (player2.IsAttack)
+                    {
+                        enemy.SetRandomPos();
+                        score++;
+                        player2.IsAttack = false;
+                    }
+                    else
+                    {
+                        player2.Health--;
+                        player2.SetRandomPos();
+                    }
                 }
             }
         }
 
-        void DrawHealthAndScore(int min, int max)
+        void DrawHealthAndScore(Player player, int score, Vector2 pos)
         {
-            Console.SetCursorPosition(0, 0);
-            Console.WriteLine($"Healt: {min}/{max} --- Score: {score}");
+            Console.ResetColor();
+            Console.SetCursorPosition(pos.x, pos.y);
+            Console.WriteLine($"Healt: {player.Health:000}/{player.MaxHealth:000} [Attak: {player.IsAttack}] --- Score: {score:0000} ");
         }
     }
 }

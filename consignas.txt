@@ -14,6 +14,13 @@
 
 8) Cuando el powerup es agarrado, desaparece y vuelve a aparecer recien cuando se toca al enemigo, en una posición distinta a la que estaba antes
 
-9) Otro personaje con WASD
+* 9) Otro personaje con WASD
 
 10) UI/HUD para ese otro personaje
+
+* 11) Separar tipo de input player
+
+12) Hacer 3 tipos de enemigos diferentes, cada uno se mueve diferente:
+- Movimiento que ya tenemos.
+- Movimiento diagonal.
+- Movimiento hacia un lado y otro (va y viene en una misma linea);

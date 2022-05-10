@@ -27,13 +27,9 @@ namespace Game.Class.Objects
             }
         }
 
-        public Character(char graph, int maxHealth = 10) : base(graph)
-        {
-            MaxHealth = maxHealth;
-            Health = maxHealth;
-        }
+        public Character(char graph, int maxHealth = 10) : this(graph, Vector2.Zero, maxHealth) { }
 
-        public Character(char graph, Vector2 position, int maxHealth = 10):base(graph, position)
+        public Character(char graph, Vector2 position, int maxHealth = 10) : base(graph, position)
         {
             MaxHealth = maxHealth;
             Health = maxHealth;
