@@ -8,11 +8,11 @@
 
 * 5) Si el enemigo toca al personaje, éste último debe aparecer en otra posición (respawnear en algún lugar distinto) y se debe mostrar actualizar el cartel vidas (restando 1)
 
-6) Hay un powerup que está fijo en una posición de pantalla. Si el personaje pasa por su posición se debe mostrar un cartel que diga atacar
+* 6) Hay un powerup que está fijo en una posición de pantalla. Si el personaje pasa por su posición se debe mostrar un cartel que diga atacar
 
-7) Al estar en este modo de ataque, si el personaje toca al enemigo, se suma un punto y el enemigo respawnea en otra posicion. El cartel de atacar inmediatamente se va y se vuelve al modo en el que el personaje puede recibir daño
+* 7) Al estar en este modo de ataque, si el personaje toca al enemigo, se suma un punto y el enemigo respawnea en otra posicion. El cartel de atacar inmediatamente se va y se vuelve al modo en el que el personaje puede recibir daño
 
-8) Cuando el powerup es agarrado, desaparece y vuelve a aparecer recien cuando se toca al enemigo, en una posición distinta a la que estaba antes
+* 8) Cuando el powerup es agarrado, desaparece y vuelve a aparecer recien cuando se toca al enemigo, en una posición distinta a la que estaba antes
 
 * 9) Otro personaje con WASD
 
