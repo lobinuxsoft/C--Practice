@@ -1,8 +1,8 @@
-1) Jugador controla un personaje que se mueve con flechas
+* 1) Jugador controla un personaje que se mueve con flechas
 
-2) Personaje se mueve de a un casillero a la vez
+* 2) Personaje se mueve de a un casillero a la vez
 
-3) Hay un enemigo que se mueve por la pantalla, de a un casillero a la vez, en una dirección aleatoria a cada movimiento
+* 3) Hay un enemigo que se mueve por la pantalla, de a un casillero a la vez, en una dirección aleatoria a cada movimiento
 
 4) Hay un cartel que dice puntos (inicia en 0) y otro que dice vidas (inicia en 5)
 

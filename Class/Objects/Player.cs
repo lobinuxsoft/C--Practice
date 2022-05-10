@@ -4,9 +4,9 @@ namespace Game.Class.Objects
 {
     class Player : Character
     {
-        public Player(char graph) : base(graph) { }
+        public Player(char graph, int maxHealth) : base(graph, maxHealth) { }
 
-        public Player(char graph, Vector2 position) : base(graph, position) { }
+        public Player(char graph, Vector2 position, int maxHealth) : base(graph, position, maxHealth) { }
 
         public override void Update()
         {

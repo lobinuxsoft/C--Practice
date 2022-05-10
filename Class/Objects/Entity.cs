@@ -5,6 +5,7 @@ namespace Game.Class.Objects
     class Entity
     {
         private Vector2 position;
+        private Vector2 screenMargin = Vector2.One;
         private char graph;
 
         public Vector2 Position
@@ -15,11 +16,17 @@ namespace Game.Class.Objects
                 Console.SetCursorPosition(position.x, position.y);
                 Console.WriteLine(' ');
                 position = value;
-                if (position.x < 0) position.x = 0;
-                else if (position.x > Console.WindowWidth-1) position.x = Console.WindowWidth-1;
-                else if (position.y < 0) position.y = 0;
-                else if (position.y > Console.WindowHeight-1) position.y = Console.WindowHeight-1;
+                if (position.x < screenMargin.x) position.x = screenMargin.x;
+                else if (position.x > Console.WindowWidth - screenMargin.x) position.x = Console.WindowWidth - screenMargin.x;
+                else if (position.y < screenMargin.y) position.y = screenMargin.y;
+                else if (position.y > Console.WindowHeight - screenMargin.y) position.y = Console.WindowHeight - screenMargin.y;
             }
+        }
+
+        public Vector2 ScreenMargin
+        {
+            get => screenMargin;
+            set => screenMargin = value;
         }
 
         public char Graph
