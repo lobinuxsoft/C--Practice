@@ -6,7 +6,7 @@
 
 * 4) Hay un cartel que dice puntos (inicia en 0) y otro que dice vidas (inicia en 5)
 
-5) Si el enemigo toca al personaje, éste último debe aparecer en otra posición (respawnear en algún lugar distinto) y se debe mostrar actualizar el cartel vidas (restando 1)
+* 5) Si el enemigo toca al personaje, éste último debe aparecer en otra posición (respawnear en algún lugar distinto) y se debe mostrar actualizar el cartel vidas (restando 1)
 
 6) Hay un powerup que está fijo en una posición de pantalla. Si el personaje pasa por su posición se debe mostrar un cartel que diga atacar
 

@@ -4,41 +4,22 @@ namespace Game.Class.Objects
 {
     class Player : Character
     {
-        public Player(char graph, int maxHealth) : base(graph, maxHealth) { }
+        Random random;
 
-        public Player(char graph, Vector2 position, int maxHealth) : base(graph, position, maxHealth) { }
-
-        public override void Update()
+        public Player(char graph, int maxHealth) : base(graph, maxHealth) 
         {
-            if (Console.KeyAvailable)
-            {
-                Move(Input(Console.ReadKey(true).KeyChar));
-            }
+            random = new Random(DateTime.Now.Millisecond);
         }
 
-        private Vector2 Input(char input)
+        public Player(char graph, Vector2 position, int maxHealth) : base(graph, position, maxHealth) 
         {
-            Vector2 result = Vector2.Zero;
-            switch (input)
-            {
-                case 'a':
-                    result.x = -1;
-                    result.y = 0;
-                    break;
-                case 'd':
-                    result.x = 1;
-                    result.y = 0;
-                    break;
-                case 'w':
-                    result.x = 0;
-                    result.y = -1;
-                    break;
-                case 's':
-                    result.x = 0;
-                    result.y = 1;
-                    break;
-            }
-            return result;
+            random = new Random(DateTime.Now.Millisecond);
+        }
+
+        public void SetRandomPos()
+        {
+            Vector2 pos = new Vector2(random.Next(0, Console.WindowWidth), random.Next(0, Console.WindowHeight));
+            Position = pos;
         }
     }
 }

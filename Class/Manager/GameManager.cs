@@ -8,8 +8,8 @@ namespace Game.Class.Manager
     {
         int score = 0;
         private bool isPlaying = true;
-        private Player player;
 
+        private Player player;
         private Enemy enemy;
 
         public void Run()
@@ -28,11 +28,20 @@ namespace Game.Class.Manager
             {
                 DrawHealthAndScore(player.Health, player.MaxHealth);
 
-                player.Update();
+                if (Console.KeyAvailable)
+                {
+                    player.Move(Input(Console.ReadKey(true).KeyChar));
+                }
+
                 player.Draw();
 
-                enemy.Update();
                 enemy.Draw();
+
+                if(player.Position == enemy.Position)
+                {
+                    player.Health--;
+                    player.SetRandomPos();
+                }
             }
         }
 
@@ -40,6 +49,31 @@ namespace Game.Class.Manager
         {
             Console.SetCursorPosition(0, 0);
             Console.WriteLine($"Healt: {min}/{max} --- Score: {score}");
+        }
+
+        private Vector2 Input(char input)
+        {
+            Vector2 result = Vector2.Zero;
+            switch (input)
+            {
+                case 'a':
+                    result.x = -1;
+                    result.y = 0;
+                    break;
+                case 'd':
+                    result.x = 1;
+                    result.y = 0;
+                    break;
+                case 'w':
+                    result.x = 0;
+                    result.y = -1;
+                    break;
+                case 's':
+                    result.x = 0;
+                    result.y = 1;
+                    break;
+            }
+            return result;
         }
     }
 }

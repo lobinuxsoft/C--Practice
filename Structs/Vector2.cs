@@ -20,5 +20,8 @@
             lhs.y += rhs.y;
             return lhs;
         }
+
+        public static bool operator ==(Vector2 lhs, Vector2 rhs) => lhs.x == rhs.x && lhs.y == rhs.y;
+        public static bool operator !=(Vector2 lhs, Vector2 rhs) => !(lhs == rhs);
     }
 }

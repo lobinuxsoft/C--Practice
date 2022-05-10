@@ -37,8 +37,6 @@
             Health = maxHealth;
         }
 
-        protected void Move(Vector2 newPosition)=> Position += newPosition;
-
-        public virtual void Update() { }
+        public void Move(Vector2 newPosition)=> Position += newPosition;
     }
 }

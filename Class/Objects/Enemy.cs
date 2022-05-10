@@ -9,24 +9,34 @@ namespace Game.Class.Objects
 
         long lastTimeMove = 0;
 
-        public Enemy(char graph, int maxHealth = 10) : base(graph, maxHealth) { }
+        Random random;
 
-        public Enemy(char graph, Vector2 position, int maxHealth = 10) : base(graph, position, maxHealth) { }
-
-        public override void Update()
+        public Enemy(char graph, int maxHealth = 10) : base(graph, maxHealth) 
         {
-            if(DateTime.Now.Ticks - lastTimeMove > 1000000)
+            random = new Random(DateTime.Now.Millisecond);
+        }
+
+        public Enemy(char graph, Vector2 position, int maxHealth = 10) : base(graph, position, maxHealth) 
+        {
+            random = new Random(DateTime.Now.Millisecond);
+        }
+
+        public override void Draw()
+        {
+            if (DateTime.Now.Ticks - lastTimeMove > 1000000)
             {
                 Move(IaCalculationMove());
                 lastTimeMove = DateTime.Now.Ticks;
             }
+
+            base.Draw();
         }
 
         private Vector2 IaCalculationMove()
         {
             Vector2 result = Vector2.Zero;
 
-            Random random = new Random(DateTime.Now.Millisecond);
+            
 
 
             MovDirection movDirection = (MovDirection)random.Next((int)MovDirection.NONE, (int)(MovDirection.DOWN) + 1);

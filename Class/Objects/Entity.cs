@@ -46,7 +46,7 @@ namespace Game.Class.Objects
             this.position = position;
         }
 
-        public void Draw()
+        public virtual void Draw()
         {
             Console.SetCursorPosition(position.x, position.y);
             Console.WriteLine(graph);
