@@ -1,29 +1,51 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace Game.Class.Objects
 {
     class Enemy : Character
     {
+        enum MovDirection { NONE, LEFT, UP, RIGHT, DOWN }
+
+        long lastTimeMove = 0;
+
         public Enemy(char graph, int maxHealth = 10) : base(graph, maxHealth) { }
 
         public Enemy(char graph, Vector2 position, int maxHealth = 10) : base(graph, position, maxHealth) { }
 
         public override void Update()
         {
-            Move(IaCalculationMove(2000).Result);
+            if(DateTime.Now.Ticks - lastTimeMove > 1000000)
+            {
+                Move(IaCalculationMove());
+                lastTimeMove = DateTime.Now.Ticks;
+            }
         }
 
-        private async Task<Vector2> IaCalculationMove(int delay)
+        private Vector2 IaCalculationMove()
         {
             Vector2 result = Vector2.Zero;
 
-            // TODO enemy movement
+            Random random = new Random(DateTime.Now.Millisecond);
 
-            await Task.Delay(delay);
+
+            MovDirection movDirection = (MovDirection)random.Next((int)MovDirection.NONE, (int)(MovDirection.DOWN) + 1);
+
+            switch (movDirection)
+            {
+                case MovDirection.LEFT:
+                    result = Vector2.Left;
+                    break;
+                case MovDirection.UP:
+                    result = Vector2.Down;
+                    break;
+                case MovDirection.RIGHT:
+                    result = Vector2.Right;
+                    break;
+                case MovDirection.DOWN:
+                    result = Vector2.Up;
+                    break;
+            }
 
             return result;
         }
