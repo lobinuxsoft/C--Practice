@@ -16,7 +16,7 @@
 
 * 9) Otro personaje con WASD
 
-10) UI/HUD para ese otro personaje
+* 10) UI/HUD para ese otro personaje
 
 * 11) Separar tipo de input player
 

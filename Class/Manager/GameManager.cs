@@ -7,7 +7,9 @@ namespace Game.Class.Manager
 
     class GameManager
     {
-        int score = 0;
+        int scoreP1 = 0;
+        int scoreP2 = 0;
+
         private bool isPlaying = true;
 
         private Player player1;
@@ -65,8 +67,8 @@ namespace Game.Class.Manager
                     }
                 }
 
-                DrawHealthAndScore(player1, score, Vector2.Zero);
-                DrawHealthAndScore(player2, score, new Vector2(0, 1));
+                DrawHealthAndScore(player1, scoreP1, Vector2.Zero);
+                DrawHealthAndScore(player2, scoreP2, new Vector2(0, 1));
 
                 if (Console.KeyAvailable)
                 {
@@ -92,7 +94,7 @@ namespace Game.Class.Manager
                     if (player1.IsAttack)
                     {
                         enemy.SetRandomPos();
-                        score++;
+                        scoreP1++;
                         player1.IsAttack = false;
                     }
                     else
@@ -106,7 +108,7 @@ namespace Game.Class.Manager
                     if (player2.IsAttack)
                     {
                         enemy.SetRandomPos();
-                        score++;
+                        scoreP2++;
                         player2.IsAttack = false;
                     }
                     else
