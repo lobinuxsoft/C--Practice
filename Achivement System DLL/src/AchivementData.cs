@@ -1,4 +1,4 @@
-﻿namespace Game.Class.Manager
+﻿namespace AchivementSystemDLL
 {
     public struct AchivementData
     {

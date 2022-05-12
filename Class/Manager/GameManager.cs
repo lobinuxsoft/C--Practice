@@ -1,6 +1,7 @@
 ﻿using Game.Class.Objects;
 using Game.Structs;
 using System;
+using AchivementSystemDLL;
 
 namespace Game.Class.Manager
 {
@@ -21,28 +22,6 @@ namespace Game.Class.Manager
 
         public void Run()
         {
-            Console.WriteLine(AchivementManager.path);
-
-            //AchivementData achivementData = new AchivementData {
-            //    Name = "algo",
-            //    Description = "Una cosa unica...",
-            //    AmountToUnlock = 10,
-            //    Count = 0
-            //};
-
-            //AchivementManager.Register(achivementData.Name, achivementData);
-            //AchivementManager.SaveData();
-            //Console.ReadKey();
-
-            AchivementManager.LoadData();
-
-            while (!AchivementManager.GetAchivementData("algo").IsUnlocked)
-            {
-                AchivementManager.Update("algo");
-            }
-
-            Console.ReadKey();
-
             Console.CursorVisible = false;
 
             player1 = new Player('☺', Vector2.Zero, 5);

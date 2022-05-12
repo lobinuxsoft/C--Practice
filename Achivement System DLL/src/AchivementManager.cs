@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using Newtonsoft.Json;
 
-namespace Game.Class.Manager
+namespace AchivementSystemDLL
 {
-    static class AchivementManager
+    public static class AchivementManager
     {
         public static string path = $"{AppDomain.CurrentDomain.BaseDirectory}Achivement\\";
 
@@ -64,9 +64,9 @@ namespace Game.Class.Manager
         /// </summary>
         /// <param name="achivementID"></param>
         /// <returns></returns>
-        public static AchivementData GetAchivementData(string achivementID) 
+        public static AchivementData GetAchivementData(string achivementID)
         {
-            if(achivements.ContainsKey(achivementID)) return achivements[achivementID].Data;
+            if (achivements.ContainsKey(achivementID)) return achivements[achivementID].Data;
             else return new AchivementData();
         }
 
@@ -75,7 +75,7 @@ namespace Game.Class.Manager
         /// </summary>
         public static void SaveData()
         {
-            if(!Directory.Exists(path)) Directory.CreateDirectory(path);
+            if (!Directory.Exists(path)) Directory.CreateDirectory(path);
 
             List<AchivementData> achivementDatas = new List<AchivementData>();
 
@@ -97,7 +97,7 @@ namespace Game.Class.Manager
             {
                 List<AchivementData> achivementDatas = JsonConvert.DeserializeObject<List<AchivementData>>(File.ReadAllText($"{path}Achivement.save"));
 
-                if(achivementDatas != null && achivementDatas.Count > 0)
+                if (achivementDatas != null && achivementDatas.Count > 0)
                 {
                     foreach (var data in achivementDatas)
                     {

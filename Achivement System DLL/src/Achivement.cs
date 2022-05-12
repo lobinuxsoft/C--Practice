@@ -1,15 +1,15 @@
 ﻿using System;
 
-namespace Game.Class.Manager
+namespace AchivementSystemDLL
 {
     class Achivement
     {
         AchivementData data;
 
-        public uint Count 
+        public uint Count
         {
             get => data.Count;
-            set 
+            set
             {
                 data.Count = value;
                 if (data.Count == data.AmountToUnlock) onAchivementUnlock?.Invoke(data);

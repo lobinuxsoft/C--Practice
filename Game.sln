@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29806.167
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32505.426
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Game", "Game.csproj", "{02D1E60D-B461-4A63-AF2E-1FC9F92113AC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test Achivements", "Test Achivements\Test Achivements.csproj", "{EECB8061-BF03-49A8-B3BC-EFF89B77C9CE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Achivement System DLL", "Achivement System DLL\Achivement System DLL.csproj", "{8041066A-850A-47D3-AA2A-FFEBC9DCBB6F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{02D1E60D-B461-4A63-AF2E-1FC9F92113AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{02D1E60D-B461-4A63-AF2E-1FC9F92113AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{02D1E60D-B461-4A63-AF2E-1FC9F92113AC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EECB8061-BF03-49A8-B3BC-EFF89B77C9CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EECB8061-BF03-49A8-B3BC-EFF89B77C9CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EECB8061-BF03-49A8-B3BC-EFF89B77C9CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EECB8061-BF03-49A8-B3BC-EFF89B77C9CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8041066A-850A-47D3-AA2A-FFEBC9DCBB6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8041066A-850A-47D3-AA2A-FFEBC9DCBB6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8041066A-850A-47D3-AA2A-FFEBC9DCBB6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8041066A-850A-47D3-AA2A-FFEBC9DCBB6F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
