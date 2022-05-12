@@ -21,6 +21,19 @@ namespace Game.Class.Manager
 
         public void Run()
         {
+            Console.WriteLine(AchivementManager.path);
+
+            AchivementData achivementData = new AchivementData {
+                Name = "algo",
+                Description = "Una cosa unica...",
+                AmountToUnlock = 10,
+                Count = 0
+            };
+
+            AchivementManager.Register(achivementData.Name, new Achivement(achivementData));
+            AchivementManager.SaveData();
+            Console.ReadKey();
+            
             Console.CursorVisible = false;
 
             player1 = new Player('☺', Vector2.Zero, 5);

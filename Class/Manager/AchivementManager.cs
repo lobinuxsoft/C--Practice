@@ -1,10 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using Newtonsoft.Json;
 
 namespace Game.Class.Manager
 {
     static class AchivementManager
     {
+        public static string path = $"{AppDomain.CurrentDomain.BaseDirectory}Achivement\\";
+
         static Dictionary<string, Achivement> achivements = new Dictionary<string, Achivement>();
 
         public static void Register(string achivementID, Achivement achivement)
@@ -32,6 +36,25 @@ namespace Game.Class.Manager
             if (achivements.ContainsKey(achivementID)) achivements[achivementID].onAchivementUnlock -= action;
         }
 
-        public static AchivementData GetAchivementData(string achivementID) => achivements[achivementID].Data;
+        public static AchivementData GetAchivementData(string achivementID) 
+        {
+            if(achivements.ContainsKey(achivementID)) return achivements[achivementID].Data;
+            else return new AchivementData();
+        }
+
+        public static void SaveData()
+        {
+            if(!Directory.Exists(path)) Directory.CreateDirectory(path);
+
+            List<AchivementData> achivementDatas = new List<AchivementData>();
+
+            foreach (var data in achivements)
+            {
+                achivementDatas.Add(data.Value.Data);
+            }
+
+            string json = JsonConvert.SerializeObject(achivementDatas);
+            File.WriteAllText($"{path}Achivement.save", json);
+        }
     }
 }

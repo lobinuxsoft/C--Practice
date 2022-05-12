@@ -6,30 +6,22 @@ namespace Game.Class.Manager
     {
         AchivementData achivementData;
 
-        private uint amountToUnlock;
-
-        private uint count;
-
         public uint Count 
         {
-            get => count;
+            get => achivementData.Count;
             set 
             {
-                count = value;
-                if (count == amountToUnlock) onAchivementUnlock?.Invoke(achivementData);
+                achivementData.Count = value;
+                if (achivementData.Count == achivementData.AmountToUnlock) onAchivementUnlock?.Invoke(achivementData);
             }
         }
 
         public AchivementData Data => achivementData;
 
-        public bool IsUnlocked => count >= amountToUnlock;
+        public bool IsUnlocked => achivementData.IsUnlocked;
 
         public Action<AchivementData> onAchivementUnlock;
 
-        public Achivement(AchivementData achivementData, uint amountToUnlock)
-        {
-            this.achivementData = achivementData;
-            this.amountToUnlock = amountToUnlock;
-        }
+        public Achivement(AchivementData achivementData) => this.achivementData = achivementData;
     }
 }
