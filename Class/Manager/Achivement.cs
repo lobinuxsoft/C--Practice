@@ -20,7 +20,7 @@ namespace Game.Class.Manager
 
         public bool IsUnlocked => data.IsUnlocked;
 
-        public Action<AchivementData> onAchivementUnlock;
+        public event Action<AchivementData> onAchivementUnlock;
 
         public Achivement(AchivementData data) => this.data = data;
     }
