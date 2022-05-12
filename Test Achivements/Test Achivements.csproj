@@ -35,5 +35,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Achivement System DLL\Achivement System DLL.csproj">
+      <Project>{8041066a-850a-47d3-aa2a-ffebc9dcbb6f}</Project>
+      <Name>Achivement System DLL</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

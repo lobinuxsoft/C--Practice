@@ -24,3 +24,17 @@
 - Movimiento que ya tenemos.
 - Movimiento diagonal.
 - Movimiento hacia un lado y otro (va y viene en una misma linea);
+
+Achivement System:
+Para poder probar el sistema, armes un ejemplo aislado, un proyecto (dentro de la misma solución idealmente) que haga uso del sistema y lo pruebe en un main básico pero aislado de todo el resto.
+Un loop por ejemplo que si tocás una tecla te unlockea un achievement y nada mucho más complejo
+Este ejemplo aislado en otro proyecto lo usás para testear las clases. Pero luego, como paso extra, podrías tener tu configuración de solución de la siguiente manera...
+
+Solución:
+- Proyecto 1: Juego EXE
+- Proyecto 2: Test Achievements EXE
+- Proyecto 3: Achievement System DLL
+
+Proyecto 1 y 2 USAN la DLL del proyecto 3
+De esa forma aislaste la funcionalidad y la dejaste preparada de forma modular
+Con un ejemplo donde se prueba y con la implementación concreta en tu juego
