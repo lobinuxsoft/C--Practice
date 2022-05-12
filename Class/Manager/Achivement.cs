@@ -4,24 +4,24 @@ namespace Game.Class.Manager
 {
     class Achivement
     {
-        AchivementData achivementData;
+        AchivementData data;
 
         public uint Count 
         {
-            get => achivementData.Count;
+            get => data.Count;
             set 
             {
-                achivementData.Count = value;
-                if (achivementData.Count == achivementData.AmountToUnlock) onAchivementUnlock?.Invoke(achivementData);
+                data.Count = value;
+                if (data.Count == data.AmountToUnlock) onAchivementUnlock?.Invoke(data);
             }
         }
 
-        public AchivementData Data => achivementData;
+        public AchivementData Data => data;
 
-        public bool IsUnlocked => achivementData.IsUnlocked;
+        public bool IsUnlocked => data.IsUnlocked;
 
         public Action<AchivementData> onAchivementUnlock;
 
-        public Achivement(AchivementData achivementData) => this.achivementData = achivementData;
+        public Achivement(AchivementData data) => this.data = data;
     }
 }

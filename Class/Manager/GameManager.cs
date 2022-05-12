@@ -23,17 +23,26 @@ namespace Game.Class.Manager
         {
             Console.WriteLine(AchivementManager.path);
 
-            AchivementData achivementData = new AchivementData {
-                Name = "algo",
-                Description = "Una cosa unica...",
-                AmountToUnlock = 10,
-                Count = 0
-            };
+            //AchivementData achivementData = new AchivementData {
+            //    Name = "algo",
+            //    Description = "Una cosa unica...",
+            //    AmountToUnlock = 10,
+            //    Count = 0
+            //};
 
-            AchivementManager.Register(achivementData.Name, new Achivement(achivementData));
-            AchivementManager.SaveData();
+            //AchivementManager.Register(achivementData.Name, achivementData);
+            //AchivementManager.SaveData();
+            //Console.ReadKey();
+
+            AchivementManager.LoadData();
+
+            while (!AchivementManager.GetAchivementData("algo").IsUnlocked)
+            {
+                AchivementManager.Update("algo");
+            }
+
             Console.ReadKey();
-            
+
             Console.CursorVisible = false;
 
             player1 = new Player('☺', Vector2.Zero, 5);
