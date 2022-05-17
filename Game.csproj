@@ -59,6 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class\Interfaces\DiagonalMovement.cs" />
+    <Compile Include="Class\Interfaces\HorizontalMovement.cs" />
     <Compile Include="Class\Interfaces\RandomMovement.cs" />
     <Compile Include="Class\Manager\GameManager.cs" />
     <Compile Include="Class\Objects\Enemy.cs" />
