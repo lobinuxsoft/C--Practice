@@ -1,6 +1,6 @@
 ﻿namespace Game.Structs
 {
-    struct Vector2
+    public struct Vector2
     {
         public int x;
         public int y;
@@ -18,6 +18,13 @@
         {
             lhs.x += rhs.x;
             lhs.y += rhs.y;
+            return lhs;
+        }
+
+        public static Vector2 operator -(Vector2 lhs, Vector2 rhs)
+        {
+            lhs.x -= rhs.x;
+            lhs.y -= rhs.y;
             return lhs;
         }
 

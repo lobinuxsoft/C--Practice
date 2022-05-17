@@ -2,12 +2,16 @@
 using Game.Structs;
 using System;
 using AchivementSystemDLL;
+using Game.Class.Interfaces;
+using System.Collections.Generic;
 
 namespace Game.Class.Manager
 {
 
     class GameManager
     {
+        private const int enemiesAmount = 10;
+
         int scoreP1 = 0;
         int scoreP2 = 0;
 
@@ -18,7 +22,7 @@ namespace Game.Class.Manager
 
         Entity powerUp;
 
-        private Enemy enemy;
+        private  List<Enemy> enemies = new List<Enemy>();
 
         public void Run()
         {
@@ -31,21 +35,19 @@ namespace Game.Class.Manager
             player1.SetRandomPos();
 
             player2 = new Player('☻', Vector2.Zero, 5);
-            player2.Color = ConsoleColor.Red;
+            player2.Color = ConsoleColor.Green;
             player2.ScreenMargin = new Vector2(2, 2);
             player2.Name = "P2";
             player2.SetRandomPos();
 
-            enemy = new Enemy('☻', Vector2.One);
-            enemy.Color = ConsoleColor.DarkMagenta;
-            enemy.ScreenMargin = new Vector2(2, 2);
+            EnemyConstructor();
 
             while (isPlaying)
             {
                 if((!player1.IsAttack && !player2.IsAttack) && powerUp == null)
                 {
                     powerUp = new Entity('♦');
-                    powerUp.Color = ConsoleColor.Green;
+                    powerUp.Color = ConsoleColor.Cyan;
                     powerUp.ScreenMargin = new Vector2(2, 2);
                     powerUp.SetRandomPos();
                 }
@@ -88,34 +90,37 @@ namespace Game.Class.Manager
                 player1.Draw();
                 player2.Draw();
 
-                enemy.Draw();
+                foreach (var enemy in enemies)
+                {
+                    enemy.Draw();
 
-                if(player1.Position == enemy.Position)
-                {
-                    if (player1.IsAttack)
+                    if(player1.Position == enemy.Position)
                     {
-                        enemy.SetRandomPos();
-                        scoreP1++;
-                        player1.IsAttack = false;
+                        if (player1.IsAttack)
+                        {
+                            enemy.SetRandomPos();
+                            scoreP1++;
+                            player1.IsAttack = false;
+                        }
+                        else
+                        {
+                            player1.Health--;
+                            player1.SetRandomPos();
+                        }
                     }
-                    else
+                    else if(player2.Position == enemy.Position)
                     {
-                        player1.Health--;
-                        player1.SetRandomPos();
-                    }
-                }
-                else if(player2.Position == enemy.Position)
-                {
-                    if (player2.IsAttack)
-                    {
-                        enemy.SetRandomPos();
-                        scoreP2++;
-                        player2.IsAttack = false;
-                    }
-                    else
-                    {
-                        player2.Health--;
-                        player2.SetRandomPos();
+                        if (player2.IsAttack)
+                        {
+                            enemy.SetRandomPos();
+                            scoreP2++;
+                            player2.IsAttack = false;
+                        }
+                        else
+                        {
+                            player2.Health--;
+                            player2.SetRandomPos();
+                        }
                     }
                 }
             }
@@ -126,6 +131,40 @@ namespace Game.Class.Manager
             Console.ResetColor();
             Console.SetCursorPosition(pos.x, pos.y);
             Console.WriteLine($"{player.Name} Healt: {player.Health}/{player.MaxHealth} [Attak: {player.IsAttack}] --- Score: {score:0000} ");
+        }
+
+        void EnemyConstructor()
+        {
+            Random rnd = new Random(DateTime.Now.Millisecond);
+
+            int enemyMovementStyle;
+            Enemy enemy;
+            Vector2 pos = Vector2.Zero;
+
+            for (int i = 0; i < enemiesAmount; i++)
+            {
+                enemyMovementStyle = rnd.Next(2);
+
+                pos.x = rnd.Next(0, Console.WindowWidth);
+                pos.y = rnd.Next(0, Console.WindowHeight);
+
+                switch (enemyMovementStyle)
+                {
+                    case 0:
+                        
+                        enemy = new Enemy((char)i, pos, new RandomMovement());
+                        enemy.Color = ConsoleColor.DarkMagenta;
+                        enemy.ScreenMargin = new Vector2(2, 2);
+                        enemies.Add(enemy);
+                        break;
+                    case 1:
+                        enemy = new Enemy((char)i, pos, new DiagonalMovement());
+                        enemy.Color = ConsoleColor.DarkRed;
+                        enemy.ScreenMargin = new Vector2(2, 2);
+                        enemies.Add(enemy);
+                        break;
+                }
+            }
         }
     }
 }

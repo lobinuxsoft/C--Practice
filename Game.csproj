@@ -58,11 +58,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class\Interfaces\DiagonalMovement.cs" />
+    <Compile Include="Class\Interfaces\RandomMovement.cs" />
     <Compile Include="Class\Manager\GameManager.cs" />
     <Compile Include="Class\Objects\Enemy.cs" />
     <Compile Include="Class\Objects\Entity.cs" />
     <Compile Include="Class\Objects\Character.cs" />
+    <Compile Include="Class\Interfaces\IMovement.cs" />
+    <Compile Include="Enums\MoveCrossDirType.cs" />
     <Compile Include="Class\Objects\Player.cs" />
+    <Compile Include="Enums\MoveDiagonalDirType.cs" />
     <Compile Include="Structs\Input.cs" />
     <Compile Include="Structs\Vector2.cs" />
     <Compile Include="Program.cs" />

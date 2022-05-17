@@ -1,52 +1,34 @@
 ﻿using System;
+using Game.Class.Interfaces;
 using Game.Structs;
 
 namespace Game.Class.Objects
 {
-    class Enemy : Character
+    partial class Enemy : Character
     {
-        enum MovDirection { NONE, LEFT, UP, RIGHT, DOWN }
+        IMovement movement;
 
         long lastTimeMove = 0;
 
-        public Enemy(char graph, int maxHealth = 10) : base(graph, maxHealth) { }
+        public Enemy(char graph, IMovement movement, int maxHealth = 10) : base(graph, maxHealth) 
+        {
+            this.movement = movement;
+        }
 
-        public Enemy(char graph, Vector2 position, int maxHealth = 10) : base(graph, position, maxHealth) { }
+        public Enemy(char graph, Vector2 position, IMovement movement, int maxHealth = 10) : base(graph, position, maxHealth) 
+        { 
+            this.movement = movement;
+        }
 
         public override void Draw()
         {
-            if (DateTime.Now.Ticks - lastTimeMove > 1000000)
+            if (DateTime.Now.Ticks - lastTimeMove > 5000000)
             {
-                Move(IaCalculationMove());
+                Move(movement.Move(Position, random));
                 lastTimeMove = DateTime.Now.Ticks;
             }
 
             base.Draw();
-        }
-
-        private Vector2 IaCalculationMove()
-        {
-            Vector2 result = Vector2.Zero;
-
-            MovDirection movDirection = (MovDirection)random.Next((int)MovDirection.NONE, (int)(MovDirection.DOWN) + 1);
-
-            switch (movDirection)
-            {
-                case MovDirection.LEFT:
-                    result = Vector2.Left;
-                    break;
-                case MovDirection.UP:
-                    result = Vector2.Down;
-                    break;
-                case MovDirection.RIGHT:
-                    result = Vector2.Right;
-                    break;
-                case MovDirection.DOWN:
-                    result = Vector2.Up;
-                    break;
-            }
-
-            return result;
         }
     }
 }
