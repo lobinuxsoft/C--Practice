@@ -26,6 +26,8 @@ namespace Game.Class.Manager
 
         public void Run()
         {
+            Console.WriteLine(FileReader.LoadFile("C:/Users/theda/OneDrive/Documentos/Repositories/CppFileWriter/credits.txt"));
+            Console.ReadKey();
             Console.CursorVisible = false;
 
             player1 = new Player('☺', Vector2.Zero, 5);
