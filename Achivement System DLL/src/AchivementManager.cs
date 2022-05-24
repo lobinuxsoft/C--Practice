@@ -36,7 +36,7 @@ namespace AchivementSystemDLL
         /// <param name="achivementID"></param>
         public static void Update(string achivementID)
         {
-            if (achivements.ContainsKey(achivementID)) achivements[achivementID].Count++;
+            if (achivements.ContainsKey(achivementID) && !achivements[achivementID].IsUnlocked) achivements[achivementID].Count++;
         }
 
         /// <summary>
@@ -84,7 +84,7 @@ namespace AchivementSystemDLL
                 achivementDatas.Add(data.Value.Data);
             }
 
-            string json = JsonConvert.SerializeObject(achivementDatas);
+            string json = JsonConvert.SerializeObject(achivementDatas, Formatting.Indented);
             File.WriteAllText($"{path}Achivement.save", json);
         }
 

@@ -11,5 +11,13 @@
         public uint AmountToUnlock { get; set; }
 
         public uint Count { get; set; }
+
+        public AchivementData(string name, string description, uint amountToUnlock)
+        {
+            Name = name;
+            Description = description;
+            AmountToUnlock = amountToUnlock;
+            Count = 0;
+        }
     }
 }
